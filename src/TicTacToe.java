@@ -11,11 +11,26 @@ public class TicTacToe
      *
      * Creates a new Board and assigns it to board, then draws game boad.
      */
-    public TicTacToe()
+    public TicTacToe(int numPlayers)
     {
-        players = new Player[2];
-        players[0] = new Player("X");
-        players[1] = new Player("O");
+        if (numPlayers == 2) {
+            players = new Player[2];
+            players[0] = new Player("X");
+            players[1] = new Player("O");
+        }
+        else if (numPlayers == 3) {
+            players = new Player[3];
+            players[0] = new Player("X");
+            players[1] = new Player("O");
+            players[2] = new Player("$");
+        }
+        else if (numPlayers == 4) {
+            players = new Player[4];
+            players[0] = new Player("X");
+            players[1] = new Player("O");
+            players[2] = new Player("$");
+            players[3] = new Player("!");
+        }
         board = new Board();
 
         // draws the board as part of setup

@@ -102,7 +102,7 @@ public class Board
      * space was outside the 1-9 range, OR the space was ALREADY occupied by the opposite player), then
      * return false to indicate the space was NOT occupied.
      *
-     * @param spaceNum  the index of the space to be occupied by player.
+     * @param spaceIdx  the index of the space to be occupied by player.
      * @param player  the Player taking the turn and attempting to "occupy" the space.
      * @return  true if the move was successful and the space occupied; return false otherwise.
      */
