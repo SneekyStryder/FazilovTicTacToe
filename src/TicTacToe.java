@@ -11,7 +11,7 @@ public class TicTacToe
      *
      * Creates a new Board and assigns it to board, then draws game boad.
      */
-    public TicTacToe(int numPlayers)
+    public TicTacToe(int numPlayers, String userBoard)
     {
         if (numPlayers == 2) {
             players = new Player[2];
@@ -31,7 +31,16 @@ public class TicTacToe
             players[2] = new Player("$");
             players[3] = new Player("!");
         }
-        board = new Board();
+        if (userBoard.equals("3x3")) {
+            board = new Board(3);
+        }
+        else if (userBoard.equals("4x4")) {
+            board = new Board(4);
+        }
+        else if (userBoard.equals("5x5")) {
+            board = new Board(5);
+        }
+
 
         // draws the board as part of setup
         board.drawBoard();

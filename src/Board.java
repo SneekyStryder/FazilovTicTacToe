@@ -7,7 +7,7 @@ public class Board
      * Constructs 9 new Space objects and adds them to the spaces array.
      * Also sets up the 8 winning conditions for tic-tac-toe.
      */
-    public Board()
+    public Board(int boardSize)
     {
         spaces = new Space[9];
         for (int i = 0; i < spaces.length; i++)
@@ -15,15 +15,31 @@ public class Board
             spaces[i] = new Space();
         }
 
-        winningConfigs = new WinCondition[8];
-        winningConfigs[0] = new WinCondition(0, 1, 2);
-        winningConfigs[1] = new WinCondition(3, 4, 5);
-        winningConfigs[2] = new WinCondition(6, 7, 8);
-        winningConfigs[3] = new WinCondition(0, 3, 6);
-        winningConfigs[4] = new WinCondition(1, 4, 7);
-        winningConfigs[5] = new WinCondition(2, 5, 8);
-        winningConfigs[6] = new WinCondition(0, 4, 8);
-        winningConfigs[7] = new WinCondition(2, 4, 6);
+        if (boardSize == 3) {
+            winningConfigs = new WinCondition[8];
+            winningConfigs[0] = new WinCondition(0, 1, 2);
+            winningConfigs[1] = new WinCondition(3, 4, 5);
+            winningConfigs[2] = new WinCondition(6, 7, 8);
+            winningConfigs[3] = new WinCondition(0, 3, 6);
+            winningConfigs[4] = new WinCondition(1, 4, 7);
+            winningConfigs[5] = new WinCondition(2, 5, 8);
+            winningConfigs[6] = new WinCondition(0, 4, 8);
+            winningConfigs[7] = new WinCondition(2, 4, 6);
+        }
+
+        else if (boardSize == 4) {
+            winningConfigs = new WinCondition[8];
+            winningConfigs[0] = new WinCondition(0, 1, 2, 3);
+            winningConfigs[1] = new WinCondition(4, 5, 6, 7);
+            winningConfigs[2] = new WinCondition(8, 9, 10, 11);
+            winningConfigs[3] = new WinCondition(12, 13, 14, 15);
+            winningConfigs[4] = new WinCondition(0, 5, 10, 15);
+            winningConfigs[5] = new WinCondition(3, 6, 9, 12);
+            winningConfigs[6] = new WinCondition(0, 4, 8, 12);
+            winningConfigs[7] = new WinCondition(1, 5, 9, 13);
+            winningConfigs[8] = new WinCondition(2, 6, 10, 14);
+            winningConfigs[9] = new WinCondition(3, 7, 11, 15);
+        }
     }
 
     // getter method; note that there is
