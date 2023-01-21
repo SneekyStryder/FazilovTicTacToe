@@ -2,6 +2,7 @@ public class Board
 {
     private Space[] spaces;
     private WinCondition[] winningConfigs;
+    private int numSpaces;
 
     /**
      * Constructs 9 new Space objects and adds them to the spaces array.
@@ -9,7 +10,19 @@ public class Board
      */
     public Board(int boardSize)
     {
-        spaces = new Space[9];
+        if (boardSize == 3) {
+            numSpaces = 9;
+        }
+        else if (boardSize == 4) {
+            numSpaces = 16;
+        }
+        else if (boardSize == 5) {
+            numSpaces = 25;
+        }
+        else if (boardSize == 6) {
+            numSpaces = 36;
+        }
+        spaces = new Space[numSpaces];
         for (int i = 0; i < spaces.length; i++)
         {
             spaces[i] = new Space();
@@ -27,6 +40,7 @@ public class Board
             winningConfigs[7] = new WinCondition(2, 4, 6);
         }
 
+        /*
         else if (boardSize == 4) {
             winningConfigs = new WinCondition[8];
             winningConfigs[0] = new WinCondition(0, 1, 2, 3);
@@ -40,7 +54,10 @@ public class Board
             winningConfigs[8] = new WinCondition(2, 6, 10, 14);
             winningConfigs[9] = new WinCondition(3, 7, 11, 15);
         }
+
+         */
     }
+
 
     // getter method; note that there is
     // a parameter, which allows caller to specify
@@ -76,11 +93,11 @@ public class Board
      * If the space is BLANK, it prints the appropriate number.
      * Otherwise, it prints the appropriate symbol.
      */
-    public void drawBoard()
+    public void drawBoard(int boardSize)
     {
         System.out.println();
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < numSpaces; i++)
         {
             Space space = spaces[i];
 
@@ -95,14 +112,56 @@ public class Board
             }
 
             // print a horizontal divider after each set of 3
-            if((i + 1) % 3 == 0)
-            {
-                System.out.println("\n-----");
+            if (boardSize == 3) {
+                if ((i + 1) % 3 == 0) {
+                    System.out.println("\n-----");
+                }
+                // print a vertical divider between each space
+                else {
+                    System.out.print("|");
+                }
             }
-            // print a vertical divider between each space
-            else
-            {
-                System.out.print("|");
+
+            if (boardSize == 4) {
+                if ((i + 1) % 4 == 0) {
+                    System.out.println("\n--------------");
+                }
+                else {
+                    if (i < 9) {
+                        System.out.print(" | ");
+                    }
+                    else {
+                        System.out.print("| ");
+                    }
+                }
+            }
+
+            if (boardSize == 5) {
+                if ((i + 1) % 5 == 0) {
+                    System.out.println("\n------------------");
+                }
+                else {
+                    if (i < 10) {
+                        System.out.print(" | ");
+                    }
+                    else {
+                        System.out.print("| ");
+                    }
+                }
+            }
+
+            if (boardSize == 6) {
+                if ((i + 1) % 6 == 0) {
+                    System.out.println("\n----------------------");
+                }
+                else {
+                    if (i < 9) {
+                        System.out.print(" | ");
+                    }
+                    else {
+                        System.out.print("| ");
+                    }
+                }
             }
         }
 

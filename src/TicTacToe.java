@@ -4,6 +4,7 @@ public class TicTacToe
 {
     private Player[] players;
     private Board board;
+    private int boardConfig;
 
     /**
      * Creates a player with the symbol X and a player with the symbol O
@@ -32,18 +33,20 @@ public class TicTacToe
             players[3] = new Player("!");
         }
         if (userBoard.equals("3x3")) {
-            board = new Board(3);
+            boardConfig = 3;
         }
         else if (userBoard.equals("4x4")) {
-            board = new Board(4);
+            boardConfig = 4;
         }
         else if (userBoard.equals("5x5")) {
-            board = new Board(5);
+            boardConfig = 5;
         }
+        else if (userBoard.equals("6x6")) {
+            boardConfig = 6;
+        }
+        board = new Board(boardConfig);
+        board.drawBoard(boardConfig);
 
-
-        // draws the board as part of setup
-        board.drawBoard();
     }
 
     /**
@@ -83,7 +86,7 @@ public class TicTacToe
      * If the board is full, print a message and return true.
      * Otherwise, the game is not yet over and return false.
      *
-     * @param p  the player taking the turn.
+     * @param player  the player taking the turn.
      * @return  true if the GAME is over, false if the TURN is over but the game is not over
      */
     public boolean takeTurn(Player player)
@@ -101,7 +104,7 @@ public class TicTacToe
         }
 
         // redraw the board, which will include the newly placed X or O as updated via recordMove
-        board.drawBoard();
+        board.drawBoard(boardConfig);
 
         // check to see if the board reveals a winning condition for either X or O
         String winner = board.checkWinner();
