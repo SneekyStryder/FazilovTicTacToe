@@ -40,9 +40,9 @@ public class Board
             winningConfigs[7] = new WinCondition(2, 4, 6);
         }
 
-        /*
+
         else if (boardSize == 4) {
-            winningConfigs = new WinCondition[8];
+            winningConfigs = new WinCondition[10];
             winningConfigs[0] = new WinCondition(0, 1, 2, 3);
             winningConfigs[1] = new WinCondition(4, 5, 6, 7);
             winningConfigs[2] = new WinCondition(8, 9, 10, 11);
@@ -55,7 +55,39 @@ public class Board
             winningConfigs[9] = new WinCondition(3, 7, 11, 15);
         }
 
-         */
+        else if (boardSize == 5) {
+            winningConfigs = new WinCondition[12];
+            winningConfigs[0] = new WinCondition(0, 1, 2, 3, 4);
+            winningConfigs[1] = new WinCondition(5, 6, 7, 8, 9);
+            winningConfigs[2] = new WinCondition(10, 11, 12, 13, 14);
+            winningConfigs[3] = new WinCondition(15, 16, 17, 18, 19);
+            winningConfigs[4] = new WinCondition(20, 21, 22, 23, 24);
+            winningConfigs[5] = new WinCondition(0, 5, 10, 15, 20);
+            winningConfigs[6] = new WinCondition(1, 6, 11, 16, 21);
+            winningConfigs[7] = new WinCondition(2, 7, 12, 17, 22);
+            winningConfigs[8] = new WinCondition(3, 8, 13, 18, 23);
+            winningConfigs[9] = new WinCondition(4, 9, 14, 19, 24);
+            winningConfigs[10] = new WinCondition(0, 6, 12, 18, 24);
+            winningConfigs[11] = new WinCondition(4, 8, 12, 16, 20);
+        }
+
+        else if (boardSize == 6) {
+            winningConfigs = new WinCondition[14];
+            winningConfigs[0] = new WinCondition(0, 1, 2, 3, 4, 5);
+            winningConfigs[1] = new WinCondition(6, 7, 8, 9, 10, 11);
+            winningConfigs[2] = new WinCondition(12, 13, 14, 15, 16, 17);
+            winningConfigs[3] = new WinCondition(18, 19, 20, 21, 22, 23);
+            winningConfigs[4] = new WinCondition(24, 25, 26, 27, 28, 29);
+            winningConfigs[5] = new WinCondition(30, 31, 32, 33, 34, 35);
+            winningConfigs[6] = new WinCondition(0, 6, 12, 18, 24, 30);
+            winningConfigs[7] = new WinCondition(1, 7, 13, 19, 25, 31);
+            winningConfigs[8] = new WinCondition(2, 8, 14, 20, 26, 32);
+            winningConfigs[9] = new WinCondition(3, 9, 15, 21, 27, 33);
+            winningConfigs[10] = new WinCondition(4, 10, 16, 22, 28, 34);
+            winningConfigs[11] = new WinCondition(5, 11, 17, 23, 29, 35);
+            winningConfigs[12] = new WinCondition(0, 7, 14, 21, 28, 35);
+            winningConfigs[13] = new WinCondition(5, 10, 15, 20, 25, 30);
+        }
     }
 
 
@@ -235,11 +267,38 @@ public class Board
     public boolean checkConfiguration(WinCondition comboToCheck)
     {
         int[] winningSpaces = comboToCheck.getWinningSpaces();
-        int s1 = winningSpaces[0];
-        int s2 = winningSpaces[1];
-        int s3 = winningSpaces[2];
 
-        return spaces[s1].getSymbol() == spaces[s2].getSymbol() && spaces[s1].getSymbol() == spaces[s3].getSymbol();
+        if (numSpaces == 9) {
+            int s1 = winningSpaces[0];
+            int s2 = winningSpaces[1];
+            int s3 = winningSpaces[2];
+            return spaces[s1].getSymbol() == spaces[s2].getSymbol() && spaces[s1].getSymbol() == spaces[s3].getSymbol();
+        }
+        else if (numSpaces == 16) {
+            int s1 = winningSpaces[0];
+            int s2 = winningSpaces[1];
+            int s3 = winningSpaces[2];
+            int s4 = winningSpaces[3];
+            return spaces[s1].getSymbol() == spaces[s2].getSymbol() && spaces[s1].getSymbol() == spaces[s3].getSymbol() && spaces[s1].getSymbol() == spaces[s4].getSymbol();
+        }
+        else if (numSpaces == 25) {
+            int s1 = winningSpaces[0];
+            int s2 = winningSpaces[1];
+            int s3 = winningSpaces[2];
+            int s4 = winningSpaces[3];
+            int s5 = winningSpaces[4];
+            return spaces[s1].getSymbol() == spaces[s2].getSymbol() && spaces[s1].getSymbol() == spaces[s3].getSymbol() && spaces[s1].getSymbol() == spaces[s4].getSymbol() && spaces[s1].getSymbol() == spaces[s5].getSymbol();
+        }
+        else if (numSpaces == 36) {
+            int s1 = winningSpaces[0];
+            int s2 = winningSpaces[1];
+            int s3 = winningSpaces[2];
+            int s4 = winningSpaces[3];
+            int s5 = winningSpaces[4];
+            int s6 = winningSpaces[5];
+            return spaces[s1].getSymbol() == spaces[s2].getSymbol() && spaces[s1].getSymbol() == spaces[s3].getSymbol() && spaces[s1].getSymbol() == spaces[s4].getSymbol() && spaces[s1].getSymbol() == spaces[s5].getSymbol() && spaces[s1].getSymbol() == spaces[s6].getSymbol();
+        }
+        return false;
     }
 
     /**
